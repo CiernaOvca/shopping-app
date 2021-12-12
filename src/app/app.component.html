@@ -1,6 +1,6 @@
 <p-menubar [model]="menuItems">
     <button pButton icon="pi pi-shopping-cart">
-        <span>({{numberOfItems}}, {{sumOfProducts | currency:'EUR'}})</span> &nbsp;
+        <span>({{ numberOfItems$ | async }}, {{ (sumOfProducts$ | async) | currency:'EUR' }})</span> &nbsp;
     </button>
 </p-menubar>
 <router-outlet></router-outlet>

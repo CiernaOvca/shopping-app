@@ -9,7 +9,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ProductDetailDialogComponent } from './product-detail-dialog/product-detail-dialog.component';
 import { DataService } from 'src/app/services/dataService.mock';
 
-import { AppComponent } from 'src/app/app.component';
+import { CartStateService } from 'src/app/common/cart-state.service';
 
 @UntilDestroy()
 @Component({
@@ -25,7 +25,7 @@ export class ProductsOverviewComponent implements OnInit {
   constructor(
     private _dataService: DataService,
     private _dialogService: DialogService,
-    private _appComponent: AppComponent,
+    private _cartStateService: CartStateService
   ) { }
 
   ngOnInit(): void {
@@ -74,7 +74,11 @@ export class ProductsOverviewComponent implements OnInit {
   }
 
   addProductToCart(data: any) {
-    this._appComponent.numberOfItems++;
-    this._appComponent.sumOfProducts += 500;
+    const product = this.productData$.getValue().find((product: { id: any; }) => product.id === data.id);
+
+    this._cartStateService.addToCart({
+      numberOfProducts: 1,
+      sumOfProducts: Number(product.price)
+    });
   }
 }

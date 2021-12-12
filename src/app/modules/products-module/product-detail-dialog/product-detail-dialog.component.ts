@@ -47,7 +47,10 @@ export class ProductDetailDialogComponent implements OnInit {
   }
 
   addToCart(): void {
-    this.dialogRef.close(this.formGroup.value);
+    this.dialogRef.close({
+      ...this.formGroup.value,
+      id: this.product.id
+    });
   }
 
   private _handleColorDropdown() {

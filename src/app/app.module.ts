@@ -14,6 +14,7 @@ import { CoreModule } from './core/core.module';
 // primeng
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
+import { CartStateService } from './common/cart-state.service';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ButtonModule } from 'primeng/button';
     CoreModule,
   ],
   providers: [
+    CartStateService,
     DialogService,
     DataService,
   ],
