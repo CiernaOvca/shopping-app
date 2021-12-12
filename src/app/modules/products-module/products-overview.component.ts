@@ -43,13 +43,16 @@ export class ProductsOverviewComponent implements OnInit {
     return 'none';
   }
 
-  showDetail(product: any) {
-    console.log('detail of', product);
+  showProductDetail(product: any) {
     this.dialogRef = this._dialogService.open(ProductDetailDialogComponent, {
       header: product.name,
-      width: '550px',
+      width: '600px',
       data: product
     });
+  }
+
+  buyProduct(product: any) {
+    
   }
 
 }

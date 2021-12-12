@@ -1,0 +1,31 @@
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    padding: 17px;
+    row-gap: 20px;
+}
+
+.separator {
+    padding-top: 40px;
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+tr {
+    :first-child {
+        text-align: center;
+        vertical-align: middle;
+    }
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid black;
+    max-width: 75px;
+
+    :first-child {
+        width: 100%;
+        max-width: 225px;
+        padding-bottom: 25px;
+    }
+}

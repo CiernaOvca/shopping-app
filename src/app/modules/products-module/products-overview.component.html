@@ -17,7 +17,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-product>
             <tr>
-                <td>{{product.name}} <br> category</td>
+                <td>{{product.name}}</td>
                 <td><img [src]="'assets/product_icons/' + product.icon" [alt]="product.name" width="100" class="p-shadow-4" /></td>
                 <td>{{product.price | currency:'EUR'}}</td>
                 <td>
@@ -35,11 +35,13 @@
                     <p-tag *ngIf="getStockAvailability(product) === 'none'" icon="pi pi-ban" value="Out of stock" severity="danger"></p-tag>
                 </td>
                 <td>
-                    <button pButton type="button" icon="pi pi-eye"></button>
+                    <button pButton type="button" icon="pi pi-eye"
+                        (click)="this.showProductDetail(product)">
+                    </button>
                     <button pButton type="button" icon="pi pi-shopping-cart" 
                         [disabled]="getStockAvailability(product) === 'none'"
-                        (click)="this.showDetail(product)"
-                    ></button>
+                        (click)="this.buyProduct(product)">
+                    </button>
                 </td>
             </tr>
         </ng-template>

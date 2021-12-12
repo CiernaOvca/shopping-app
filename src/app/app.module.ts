@@ -7,8 +7,9 @@ import { AppComponent } from './app.component';
 import { DialogService } from 'primeng/dynamicdialog';
 import { DataService } from './services/dataService.mock';
 
-import { CoreModule } from './core/core.module';
+// modules
 import { ProductsModule } from './modules/products-module/products.module';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
