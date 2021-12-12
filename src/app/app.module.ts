@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // app components
-import { ProductsOverviewComponent } from './components/products-overview/products-overview.component';
+import { ProductDetailDialogComponent } from './modules/products-module/product-detail-dialog/product-detail-dialog.component';
+import { ProductsOverviewComponent } from './modules/products-module/products-overview.component';
 
 // services
 import { DialogService } from 'primeng/dynamicdialog';
@@ -25,6 +26,7 @@ import { CoreModule } from './core/core.module';
   declarations: [
     AppComponent,
 
+    ProductDetailDialogComponent,
     ProductsOverviewComponent,
   ],
   imports: [

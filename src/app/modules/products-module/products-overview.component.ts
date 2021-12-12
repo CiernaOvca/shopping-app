@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
 import { BehaviorSubject } from 'rxjs';
+
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+
 import { DataService } from 'src/app/services/dataService.mock';
+import { ProductDetailDialogComponent } from './product-detail-dialog/product-detail-dialog.component';
 
 @Component({
   selector: 'app-products-overview',
@@ -10,8 +15,11 @@ import { DataService } from 'src/app/services/dataService.mock';
 export class ProductsOverviewComponent implements OnInit {
   productData$: BehaviorSubject<any> = new BehaviorSubject('');
 
+  private dialogRef: DynamicDialogRef = new DynamicDialogRef;
+
   constructor(
     private _dataService: DataService,
+    private _dialogService: DialogService,
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +41,15 @@ export class ProductsOverviewComponent implements OnInit {
       return 'low';
     }
     return 'none';
+  }
+
+  showDetail(product: any) {
+    console.log('detail of', product);
+    this.dialogRef = this._dialogService.open(ProductDetailDialogComponent, {
+      header: product.name,
+      width: '550px',
+      data: product
+    });
   }
 
 }
