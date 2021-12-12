@@ -11,6 +11,10 @@ import { DataService } from './services/dataService.mock';
 import { ProductsModule } from './modules/products-module/products.module';
 import { CoreModule } from './core/core.module';
 
+// primeng
+import { MenubarModule } from 'primeng/menubar';
+import { ButtonModule } from 'primeng/button';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +23,9 @@ import { CoreModule } from './core/core.module';
   imports: [
     AppRoutingModule,
     ProductsModule,
+
+    MenubarModule,
+    ButtonModule,
 
     CoreModule,
   ],

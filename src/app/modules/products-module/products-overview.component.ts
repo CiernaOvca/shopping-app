@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
+import { distinctUntilChanged } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
-import { DataService } from 'src/app/services/dataService.mock';
 import { ProductDetailDialogComponent } from './product-detail-dialog/product-detail-dialog.component';
+import { DataService } from 'src/app/services/dataService.mock';
 
+import { AppComponent } from 'src/app/app.component';
+
+@UntilDestroy()
 @Component({
   selector: 'app-products-overview',
   templateUrl: './products-overview.component.html',
@@ -20,14 +25,11 @@ export class ProductsOverviewComponent implements OnInit {
   constructor(
     private _dataService: DataService,
     private _dialogService: DialogService,
+    private _appComponent: AppComponent,
   ) { }
 
   ngOnInit(): void {
     this.productData$ = this._dataService.getDataForDataView();
-
-    this.productData$.subscribe((value: any) => {
-      console.log('value', value);
-    })
   }
 
   getStockAvailability(product: any): string {
@@ -47,12 +49,32 @@ export class ProductsOverviewComponent implements OnInit {
     this.dialogRef = this._dialogService.open(ProductDetailDialogComponent, {
       header: product.name,
       width: '600px',
-      data: product
+      data: {
+        productDetail: product,
+        type: 'detail'
+      }
     });
   }
 
   buyProduct(product: any) {
-    
+    this._dialogService.open(ProductDetailDialogComponent, {
+      header: product.name,
+      width: '600px',
+      data: {
+        productDetail: product,
+        type: 'buy'
+      }
+    }).onClose.pipe(
+      distinctUntilChanged(),
+      untilDestroyed(this)
+    ).subscribe((data) => {
+      if (data)
+        this.addProductToCart(data);
+    });
   }
 
+  addProductToCart(data: any) {
+    this._appComponent.numberOfItems++;
+    this._appComponent.sumOfProducts += 500;
+  }
 }

@@ -5,27 +5,44 @@
     row-gap: 20px;
 }
 
-.separator {
-    padding-top: 40px;
-    font-size: xx-large;
-    font-weight: 600;
-}
+table {
+    tr {
+        :first-child {
+            text-align: center;
+            vertical-align: middle;
+        }
 
-tr {
-    :first-child {
-        text-align: center;
-        vertical-align: middle;
+        &.action-button {
+            text-align: center;
+        }
+    }
+
+    td {
+        padding: 10px;
+        border-bottom: 1px solid black;
+        max-width: 75px;
+
+        :first-child {
+            width: 100%;
+            max-width: 225px;
+            padding-bottom: 25px;
+        }
+
+        button {
+            height: 15px;
+            align-items: baseline;
+            margin: 15px 0 15px
+        }
+    }
+
+    .no-border {
+        border-bottom: none;
+    }
+
+    .separator {
+        padding-top: 40px;
+        font-size: xx-large;
+        font-weight: 600;
     }
 }
 
-td {
-    padding: 10px;
-    border-bottom: 1px solid black;
-    max-width: 75px;
-
-    :first-child {
-        width: 100%;
-        max-width: 225px;
-        padding-bottom: 25px;
-    }
-}

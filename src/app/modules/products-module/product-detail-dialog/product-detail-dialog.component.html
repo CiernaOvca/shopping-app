@@ -1,38 +1,76 @@
+<form [formGroup]="formGroup">
+    <div class="dialog-content">
 
-
-<div class="dialog-content">
-
-    <table>
-        <tr>
-            <td colspan="2">
-                <img [src]="'assets/product_icons/' + product.icon" [alt]="product.name" class="p-shadow-4"/>
-            </td>
-        </tr>
-        <tr>
-            <td>Brand</td>
-            <td>{{product.brand}}</td>
-        </tr>
-        <tr>
-            <td>Weight</td>
-            <td>{{product.weight}}</td>
-        </tr>
-        <tr>
-            <td>Additional information</td>
-            <td>{{product.info}}</td>
-        </tr>
-
-        <tr>
-            <td colspan="2" class="separator">Options</td>
-        </tr>
-        <ng-container *ngFor="let option of product.options">
-            <tr *ngFor="let item of option | keyvalue">
-                <td>{{ item.key | capitalizeFirstLetter }}</td>
-                <td>{{ item.value }}</td>
+        <table>
+            <tr>
+                <td colspan="3">
+                    <img [src]="'assets/product_icons/' + product.icon" [alt]="product.name" class="p-shadow-4"/>
+                </td>
             </tr>
-            <tr class="separator">&nbsp;</tr>
-        </ng-container>
 
-    </table>
+            <ng-container *ngIf="this.isDetail; else buying">
+                <tr>
+                    <td>Brand</td>
+                    <td>{{product.brand}}</td>
+                </tr>
+                <tr>
+                    <td>Weight</td>
+                    <td>{{product.weight}}</td>
+                </tr>
+                <tr>
+                    <td>Additional information</td>
+                    <td>{{product.info}}</td>
+                </tr>
 
-</div>
+                <tr>
+                    <td colspan="2" class="separator">Options</td>
+                </tr>
+                <ng-container *ngFor="let option of product.options">
+                    <tr *ngFor="let item of option | keyvalue">
+                        <td>{{ item.key | capitalizeFirstLetter }}</td>
+                        <td>{{ item.value }}</td>
+                    </tr>
+                    <tr class="separator">&nbsp;</tr>
+                </ng-container>
+            </ng-container>
+
+            <ng-template #buying>
+                <tr>
+                    <td>
+                        <p-dropdown formControlName="color" optionLabel="name" placeholder="Color"
+                            [options]="colors">
+                        </p-dropdown>
+                    </td>
+                    <td>
+                        <p-dropdown formControlName="storage" optionLabel="name" placeholder="Storage"
+                            [options]="storages"
+                        ></p-dropdown>
+                    </td>
+                    <td>
+                        <p-dropdown formControlName="power" optionLabel="name" placeholder="Power"
+                            [options]="powers"
+                        ></p-dropdown>
+                    </td>
+                </tr>
+                <tr class="action-button">
+                    <td class="no-border"></td>
+                    <td class="no-border">
+                        <button *ngIf="!isOutOfStock; else outOfStock"
+                            pButton type="button" label="Add to cart" icon="pi pi-shopping-cart"
+                            (click)="addToCart()"
+                            [disabled]="!this.formGroup.valid"
+                        ></button>
+                        <ng-template #outOfStock>
+                            <button pButton type="button" label="Out of stock" icon="pi pi-ban" class="p-button-danger"
+                                [disabled]="isOutOfStock"
+                            ></button>
+                        </ng-template>
+                    </td>
+                    <td class="no-border"></td>
+                </tr>
+            </ng-template>
+
+        </table>
+    </div>
+</form>
   
