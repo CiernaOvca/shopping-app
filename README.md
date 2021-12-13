@@ -6,8 +6,10 @@ Application is divided into three main parts:
 - modules - contains individual components
 
 
-First page contains an overview of the procucts, where user can browse and see name of the product, picture, price and current stock status of it. The actions of every product are as follows: 
-**Detail** - will show modal with more information about product, such as options (color, storage/power)
+First page contains an overview of the procucts, where user can browse and see name of the product, picture, price and current stock status of it. The actions of every product are as follows:   
+
+**Detail** - will show modal with more information about product, such as options (color, storage/power).  
+
 **Add to cart** - will show modal with options for the product. User can choose a specific options and if the product is available (quantity of it is > 0), user can add it to the cart. This will trigger the properties showed in right upper corner and will update the number of products and the sum of the products in the cart.
 
 ## Implemented features
