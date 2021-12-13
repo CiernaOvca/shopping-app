@@ -4,8 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // services
+import { CartStateService } from './common/services/cartData.service';
 import { DialogService } from 'primeng/dynamicdialog';
-import { DataService } from './services/dataService.mock';
+import { DataService } from './common/services/dataService.mock';
 
 // modules
 import { ProductsModule } from './modules/products-module/products.module';
@@ -14,7 +15,6 @@ import { CoreModule } from './core/core.module';
 // primeng
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
-import { CartStateService } from './common/cart-state.service';
 
 
 @NgModule({

@@ -288,8 +288,16 @@ const productData = {
 }
 
 export class DataService {
+    public products$: BehaviorSubject<any>;
+    private _products = new BehaviorSubject(productData.items);
+
+    constructor() {
+        this.products$ = this._products;
+    }
+
     public getDataForDataView(): BehaviorSubject<any> {
-        return new BehaviorSubject(productData.items);
+        console.log(this.products$.getValue());
+        return this.products$;
     }
 }
     

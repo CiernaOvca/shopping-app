@@ -1,4 +1,9 @@
 export interface CartEntry {
-    numberOfProducts: number,
-    sumOfProducts: number
+    price: number,
+    productId: number,
+    name: string,
+    color: string,
+    power?: any;
+    storage?: any;
+    icon?: string;
 }

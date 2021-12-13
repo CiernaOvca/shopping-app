@@ -8,14 +8,13 @@ import {
 
 import { ShoppingCommonModule } from 'src/app/common/common.module';
 
-import { DataService } from 'src/app/services/dataService.mock';
+import { DataService } from '../../common/services/dataService.mock';
 
 import { ProductDetailDialogComponent } from './product-detail-dialog/product-detail-dialog.component';
 import { ProductsOverviewComponent } from './products-overview.component';
 import { ProductsRoutingModule } from './products-routing.module';
 
 // primeng components
-import { FieldsetModule } from 'primeng/fieldset';
 import { DataViewModule } from 'primeng/dataview';
 import { DropdownModule } from 'primeng/dropdown';
 import { TabViewModule } from 'primeng/tabview';
@@ -23,6 +22,7 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
+import { CartStateService } from 'src/app/common/services/cartData.service';
 
 
 @NgModule({
@@ -39,7 +39,6 @@ import { TagModule } from 'primeng/tag';
     ReactiveFormsModule,
     FormsModule,
 
-    FieldsetModule,
     DataViewModule,
     DropdownModule,
     TabViewModule,
@@ -49,7 +48,7 @@ import { TagModule } from 'primeng/tag';
     TagModule,
   ],
   providers: [ 
-    DataService
+    DataService,
   ]
 })
 export class ProductsModule { }

@@ -7,9 +7,9 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { ProductDetailDialogComponent } from './product-detail-dialog/product-detail-dialog.component';
-import { DataService } from 'src/app/services/dataService.mock';
+import { DataService } from '../../common/services/dataService.mock';
 
-import { CartStateService } from 'src/app/common/cart-state.service';
+import { CartStateService } from 'src/app/common/services/cartData.service';
 
 @UntilDestroy()
 @Component({
@@ -74,11 +74,19 @@ export class ProductsOverviewComponent implements OnInit {
   }
 
   addProductToCart(data: any) {
-    const product = this.productData$.getValue().find((product: { id: any; }) => product.id === data.id);
+    const product = 
+      this.productData$
+        .getValue()
+        .find((product: { id: any; }) => product.id === data.id);
 
     this._cartStateService.addToCart({
-      numberOfProducts: 1,
-      sumOfProducts: Number(product.price)
+      price: Number(product.price),
+      productId: Number(data.id),
+      name: product.name,
+      color: data.color.name,
+      power: data.power?.name,
+      storage: data.storage?.name,
+      icon: product.icon
     });
   }
 }

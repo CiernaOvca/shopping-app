@@ -1,0 +1,38 @@
+<div class="card">
+    <p-table [value]="productsInCart$ | async">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                Cart
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Specification</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.name}}</td>
+                <td><img [src]="'assets/product_icons/' + product.icon" [alt]="product.name" width="100" class="p-shadow-4" /></td>
+                <td *ngIf="product.storage || product.power">
+                    {{ product.storage || product.power }}
+                </td>
+                <td>{{product.price | currency:'EUR'}}</td>
+                <td>
+                    <button pButton type="button" icon="pi pi-times"
+                        (click)="this.removeProduct(product)">
+                    </button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{ (numberOfProducts$ | async) }} products, worth {{(sumOfProducts$ | async) | currency:'EUR'}}
+            </div>
+        </ng-template>
+    </p-table>
+</div>

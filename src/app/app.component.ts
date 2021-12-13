@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { CartStateService } from './common/services/cartData.service';
 
-import { CartStateService } from './common/cart-state.service';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +13,13 @@ export class AppComponent {
   public sumOfProducts$: BehaviorSubject<number>;
 
   public menuItems = [
-    { label: 'Home', icon: 'pi pi-fw pi-home', routerLink: '' },
+    { label: 'Home', icon: 'pi pi-fw pi-home', routerLink: '/' },
   ];
 
   constructor(
     private _cartStateService: CartStateService
   ) {
-    this.numberOfItems$ = this._cartStateService.numberOfProducts$;
-    this.sumOfProducts$ = this._cartStateService.sumOfProducts$;
+    this.numberOfItems$ = this._cartStateService.getNumberOfProducts();
+    this.sumOfProducts$ = this._cartStateService.getSumOfProducts();
   }
 }

@@ -10,7 +10,6 @@
                 <th>Name</th>
                 <th>Image</th>
                 <th>Price</th>
-                <th>Tags</th>
                 <th>Status</th>
                 <th></th>
             </tr>
@@ -20,15 +19,6 @@
                 <td>{{product.name}}</td>
                 <td><img [src]="'assets/product_icons/' + product.icon" [alt]="product.name" width="100" class="p-shadow-4" /></td>
                 <td>{{product.price | currency:'EUR'}}</td>
-                <td>
-                    <p-tag *ngIf="product.tags.includes('house appliances')" icon="pi pi-tag" value="House appliances"></p-tag>
-                    <p-tag *ngIf="product.tags.includes('smart home')" icon="pi pi-tag"></p-tag>
-                    <p-tag *ngIf="product.tags.includes('electronics')" icon="pi pi-tag"></p-tag>
-                    <p-tag *ngIf="product.tags.includes('gaming console')" icon="pi pi-tag"></p-tag>
-                    <p-tag *ngIf="product.tags.includes('music')" icon="pi pi-tag"></p-tag>
-                    <p-tag *ngIf="product.tags.includes('health')" icon="pi pi-tag"></p-tag>
-                    <p-tag *ngIf="product.tags.includes('tv') || product.tags.includes('monitor')" icon="pi pi-tag"></p-tag>
-                </td>
                 <td>
                     <p-tag *ngIf="getStockAvailability(product) === 'in'" icon="pi pi-check" value="In stock" severity="success"></p-tag>
                     <p-tag *ngIf="getStockAvailability(product) === 'low'" icon="pi pi-bolt" value="Low stock" severity="warning"></p-tag>
