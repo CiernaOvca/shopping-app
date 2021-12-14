@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CartEntry } from '../models/cartEntry';
+import { DataService } from './dataService.mock';
 
 @Injectable({providedIn: 'root'})
 export class CartStateService {
@@ -11,6 +12,11 @@ export class CartStateService {
     private numberOfProducts$: BehaviorSubject<number> = new BehaviorSubject(this._numberOfProducts);
     private sumOfProducts$: BehaviorSubject<number> = new BehaviorSubject(this._sumOfProducts);
     private listOfProducts$: BehaviorSubject<any[]> = new BehaviorSubject(this._listOfSelectedProducts);
+
+    constructor(
+        private _dataService: DataService
+    ) {
+    }
 
 
     public getNumberOfProducts(): BehaviorSubject<number> {
@@ -31,6 +37,8 @@ export class CartStateService {
         this._numberOfProducts++;
         this._sumOfProducts += cartEntry.price;
 
+        this._dataService.increaseQuantity(cartEntry, 'decrease');
+
         this._notifySubscribers();
     }
 
@@ -40,6 +48,8 @@ export class CartStateService {
         ), 1);
         this._numberOfProducts--;
         this._sumOfProducts -= cartEntry.price;
+
+        this._dataService.increaseQuantity(cartEntry, 'increase');
         
         this._notifySubscribers();
     }

@@ -299,5 +299,15 @@ export class DataService {
         console.log(this.products$.getValue());
         return this.products$;
     }
+
+    public increaseQuantity(product: any, type: string) {
+        let options: any = this._products.getValue().find(p => p.id === product.productId)?.options;
+
+        if (options) {
+            type === 'increase' ? 
+                options.find((o: { color: any; }) => o.color === product.color).quantity++ : 
+                options.find((o: { color: any; }) => o.color === product.color).quantity--; 
+        }
+    }
 }
     
