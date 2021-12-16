@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { CartStateService } from 'src/app/common/services/cartData.service';
+import { BehaviorSubject } from 'rxjs';
+
+import { CartStateService } from '../../../common/services/cartData.service';
 
 @Component({
   selector: 'app-shopping-cart',

@@ -296,7 +296,6 @@ export class DataService {
     }
 
     public getDataForDataView(): BehaviorSubject<any> {
-        console.log(this.products$.getValue());
         return this.products$;
     }
 

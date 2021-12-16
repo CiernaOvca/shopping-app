@@ -9,7 +9,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ProductDetailDialogComponent } from './product-detail-dialog/product-detail-dialog.component';
 import { DataService } from '../../common/services/dataService.mock';
 
-import { CartStateService } from 'src/app/common/services/cartData.service';
+import { CartStateService } from '../../common/services/cartData.service';
 
 @UntilDestroy()
 @Component({

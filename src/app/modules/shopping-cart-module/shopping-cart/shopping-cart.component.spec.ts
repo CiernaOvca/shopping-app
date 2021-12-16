@@ -1,20 +1,22 @@
-import { CommonModule } from '@angular/common';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
+
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { TableModule, Table } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
-import { CartStateService } from '../../../common/services/cartData.service';
 
+import { CartStateService } from '../../../common/services/cartData.service';
 import { ShoppingCartComponent } from './shopping-cart.component';
 
 const dummyCartStateService = {
   getListOfSelectedProducts() {
-    
+
   },
   getNumberOfProducts() {
 

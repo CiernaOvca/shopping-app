@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { CapitalizeFirstLetterPipe } from 'src/app/common/pipes/capitalizeFirstLetter.pipe';
+import { CapitalizeFirstLetterPipe } from '../common/pipes/capitalizeFirstLetter.pipe';
 
 
 @NgModule({

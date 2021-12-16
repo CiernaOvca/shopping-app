@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule 
 } from '@angular/forms';
 
-import { ShoppingCommonModule } from 'src/app/common/common.module';
+import { ShoppingCommonModule } from '../../common/common.module';
 
 import { DataService } from '../../common/services/dataService.mock';
 
@@ -22,7 +22,6 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
-import { CartStateService } from 'src/app/common/services/cartData.service';
 
 
 @NgModule({

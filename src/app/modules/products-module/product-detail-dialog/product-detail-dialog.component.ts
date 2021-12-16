@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { distinctUntilChanged } from 'rxjs/operators';
@@ -64,6 +64,8 @@ export class ProductDetailDialogComponent implements OnInit {
     );
   }
 
+  // get data for product options - powers or storages
+  // check if there is enough quantity for a user to buy it
   private _handleColorSelectionChange(selectedColor: string) {
     if(!selectedColor)
       return;
